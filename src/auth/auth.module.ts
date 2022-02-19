@@ -6,6 +6,7 @@ import { UserEntity } from './models/user.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtGuard } from './guards/jwt.guard';
 import { JWTStrategy } from './guards/jwt.strategy';
+import { RolesGuard } from './guards/roles.guard';
 
 @Module({
   imports: [
@@ -19,7 +20,7 @@ import { JWTStrategy } from './guards/jwt.strategy';
     }),
     TypeOrmModule.forFeature([UserEntity]),
   ],
-  providers: [AuthService, JwtGuard, JWTStrategy],
+  providers: [AuthService, JwtGuard, JWTStrategy, RolesGuard],
   controllers: [AuthController],
 })
 export class AuthModule {}
