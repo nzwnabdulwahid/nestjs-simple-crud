@@ -68,4 +68,11 @@ export class AuthService {
       },
     );
   }
+
+  findUserById(id: number): Promise<User> {
+    return this.userRepository.findOne({id}, {relations: ['feedPost']}).then((user:User) => {
+      delete user.password;
+      return user;
+    })
+  }
 }

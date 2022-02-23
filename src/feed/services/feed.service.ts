@@ -37,4 +37,8 @@ export class FeedService {
   deletePost(id: number): Observable<DeleteResult> {
     return from(this.feedPostRepository.delete(id));
   }
+
+  findPostById(id: number): Promise<FeedPost> {
+    return this.feedPostRepository.findOne({id}, {relations:['author']})
+  }
 }
